@@ -1,0 +1,115 @@
+# values.yaml
+
+# Application name and version
+app:
+  name: my-app
+  version: 1.0.0
+
+# Image configuration
+image:
+  repository: my-app-repo/my-app
+  tag: latest
+  pullPolicy: IfNotPresent
+
+# Replica count
+replicaCount: 3
+
+# Resource limits and requests
+resources:
+  limits:
+    cpu: "500m"
+    memory: "512Mi"
+  requests:
+    cpu: "200m"
+    memory: "256Mi"
+
+# Service configuration
+service:
+  type: ClusterIP
+  port: 80
+
+# Ingress configuration
+ingress:
+  enabled: true
+  annotations: {}
+  hosts:
+    - host: my-app.example.com
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls: []
+
+# Environment variables
+env:
+  - name: ENV
+    value: production
+  - name: LOG_LEVEL
+    value: info
+
+# ConfigMap values
+config:
+  key1: value1
+  key2: value2
+
+# Secret values
+secret:
+  username: my-username
+  password: my-password
+
+# Persistence configuration
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+  storageClass: ""
+
+# Liveness and readiness probes
+livenessProbe:
+  httpGet:
+    path: /healthz
+    port: 8080
+  initialDelaySeconds: 10
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1
+
+readinessProbe:
+  httpGet:
+    path: /readyz
+    port: 8080
+  initialDelaySeconds: 5
+  periodSeconds: 10
+  timeoutSeconds: 5
+  failureThreshold: 3
+  successThreshold: 1
+
+# Node selector, tolerations, and affinity
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+# Custom annotations for pods
+podAnnotations: {}
+
+# Custom labels for pods
+podLabels: {}
+
+# Horizontal Pod Autoscaler configuration
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 10
+  targetCPUUtilizationPercentage: 80
+
+# Logging configuration
+logging:
+  enabled: true
+  level: info
+
+# Metrics and monitoring configuration
+metrics:
+  enabled: false
+  serviceMonitor:
+    enabled: false
+    additionalLabels: {}
