@@ -3,7 +3,7 @@
 # Application name and version
 app:
   name: my-app
-  version: 8.9.0
+  version: 5.9.3
 
 # Image configuration
 image:
